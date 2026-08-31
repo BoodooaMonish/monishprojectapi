@@ -1,0 +1,105 @@
+{
+  "name": "monishprojectapi",
+  "publisher": "Boodooa-Monish",
+  "displayName": "Monish Project API",
+  "description": "Monish Project API",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "monishprojectapi-container",
+          "title": "Project API",
+          "icon": "media/docs.png"
+        }
+      ]
+    },
+    "views": {
+      "monishprojectapi-container": [
+        {
+          "type": "webview",
+          "id": "monishprojectapi-webview-panel",
+          "name": "Project File Manager",
+          "icon": "media/docs.png"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "monishprojectapi.changeToSettingsBanner",
+          "when": "view == monishprojectapi-webview-panel",
+          "group": "navigation@4"
+        },
+        {
+          "command": "monishprojectapi.exportConfig",
+          "when": "view == monishprojectapi-webview-panel",
+          "group": "navigation@3"
+        },
+        {
+          "command": "monishprojectapi.importConfig",
+          "when": "view == monishprojectapi-webview-panel",
+          "group": "navigation@2"
+        },
+        {
+          "command": "monishprojectapi.addProjectInConfig",
+          "when": "view == monishprojectapi-webview-panel",
+          "group": "navigation@1"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "monishprojectapi.changeToSettingsBanner",
+        "title": "monishprojectapi: change to the settings page",
+        "icon": "$(gear)"
+      },
+      {
+        "command": "monishprojectapi.exportConfig",
+        "title": "monishprojectapi: export the config file",
+        "icon": "$(cloud-download)"
+      },
+      {
+        "command": "monishprojectapi.importConfig",
+        "title": "monishprojectapi: import a config file",
+        "icon": "$(cloud-upload)"
+      },
+      {
+        "command": "monishprojectapi.addProjectInConfig",
+        "title": "monishprojectapi: Add a new project to the config file",
+        "icon": "$(add)"
+      }
+    ]
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "vscode-test",
+    "compile-webview": "vite build",
+    "watch-webview": "vite build --watch"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "@types/vscode": "^1.125.0",
+    "@vitejs/plugin-react": "^6.0.5",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.39.3",
+    "vite": "^8.2.0"
+  },
+  "dependencies": {
+    "@vscode/codicons": "^0.0.46-24",
+    "@vscode/webview-ui-toolkit": "^1.4.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  }
+}
