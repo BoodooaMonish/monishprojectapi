@@ -8,7 +8,8 @@ const configfile = {
 	'api': '',
 	'projects': [],
 };
-const hostnameAPI = "https://bilendi.decipherinc.com/api/v1/";
+const hostname = "bilendi.decipherinc.com";
+const hostnameAPI = "https://" + hostname +"/api/v1/";
 let isUsingAPI = false;
 const XML_SCHEME = 'monish-xml-datasource';
 const xmlCache = new Map();
@@ -82,7 +83,7 @@ function activate(context) {
 		async readFile(uri) {
 			try {
 				// Fetch the complete XML document from the xmlCache
-				console.log(uri);
+				//console.log(uri);
 				const xmlString = await xmlCache.get(uri.path.replaceAll('/', ''))
 
 				// Convert the raw string into a buffer for VS Code
@@ -230,6 +231,10 @@ class ReactWebviewViewProvider {
 					// message used to remove a project from the project list on the config file
 					this.removeFromConfig(message.projectid);
 					break
+				case 'goToLink':
+					// message used to go to the project's portal
+					this.goToLink("https://" + hostname + '/apps/portal#/projects/detail/' + message.projectpath);
+					break
 			}
 		});
 
@@ -322,7 +327,7 @@ class ReactWebviewViewProvider {
 		const rawConfigAPIFile = await vscode.workspace.fs.readFile(configfileName);
 		const stringConfigAPIFile = new TextDecoder('utf-8').decode(rawConfigAPIFile);
 		this.configfile = JSON.parse(stringConfigAPIFile);
-		console.log("Decoded Object data:", this.configfile);
+		//console.log("Decoded Object data:", this.configfile);
 	}
 
 	//Convert the config object and store it as a JSON file
@@ -331,7 +336,7 @@ class ReactWebviewViewProvider {
 		const newFiletextEncoder = new TextEncoder();
 		const configfileJSON = newFiletextEncoder.encode(JSON.stringify(this.configfile, null, 4));
 		await vscode.workspace.fs.writeFile(configfileName, configfileJSON);
-		console.log("The config file has been saved:", this.configfile);
+		//console.log("The config file has been saved:", this.configfile);
 	}
 
 	//get method for retriving the config object
@@ -727,8 +732,8 @@ class ReactWebviewViewProvider {
 
 
 
-						console.log('Error"')
-						console.log(errorData);
+						//console.log('Error"')
+						//console.log(errorData);
 
 						throw new Error(`Saving the survey.xml from the server responded with an error: ${errorData["$error"]}\n\n ${additionalData.join('\n')}`);
 					}
@@ -753,6 +758,11 @@ class ReactWebviewViewProvider {
 		} else {
 			return;
 		}
+	}
+
+	async goToLink(surveyPath){
+
+		await vscode.env.openExternal(surveyPath);
 	}
 }
 

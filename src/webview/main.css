@@ -81,7 +81,7 @@
 .monishprojectapi_projectscontainer__card__extra {
     display: grid;
     width: 100%;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
 

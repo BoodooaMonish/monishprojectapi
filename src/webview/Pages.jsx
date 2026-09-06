@@ -112,11 +112,23 @@ function AccordionCard({ projectdata, updateOpened, setupdateOpened, vscode }) {
 
   }
 
+  const goToLink = (e) => {
+    e.stopPropagation();
+    if (!vscode) return false;
+
+    vscode.postMessage({
+      command: 'goToLink',
+      projectpath: projectdata.path,
+    });
+
+  }
+
   return (
     <li className='monishprojectapi_projectscontainer__card' onClick={onButtonClick}>
       <div className='monishprojectapi_projectscontainer__card__text'><span>{projectdata.favorite && (<span class="codicon codicon-heart-filled"></span>)}{projectdata.title} <br />{'(' + projectdata.path + ')'}</span>{Boolean(updateOpened === projectdata.id) ? <span class="codicon codicon-chevron-down"></span> : <span class="codicon codicon-chevron-up"></span>}</div>
       <div className='monishprojectapi_projectscontainer__card__extra' data-isopened={Boolean(updateOpened === projectdata.id)}>
         <VSCodeButton appearance="primary" onClick={openInEditor}><div class="codicon codicon-open-in-product" title='Open in Editor'></div></VSCodeButton>
+        <VSCodeButton appearance="icon" onClick={goToLink}><div class="codicon codicon-link-external" title='Go to Survey Portal'></div></VSCodeButton>
         {!projectdata.favorite && (<VSCodeButton appearance="icon" onClick={setAsFavorite}><div class="codicon codicon-heart" title='Set as Favorite'></div></VSCodeButton>)}
         {projectdata.favorite && (<VSCodeButton appearance="icon" onClick={unsetAsFavorite}><div class="codicon codicon-heart-filled" title='Unset as Favorite'></div></VSCodeButton>)}
         <VSCodeButton appearance="icon" onClick={removeFromConfig}><div class="codicon codicon-trash" title='Delete from Config File'></div></VSCodeButton>
@@ -165,12 +177,12 @@ export function Settingpage({ onChangePage, vscode, apidata }) {
 
   return (
     <>
-      <p>In order for this extension to work, you will need an api key from your Decipher portal. <br /><br />Once retrieved along with all necessary fetch permissions, please insert the key on the textbox below:</p>
+      <p>In order for this extension to work, you will need an api key from your Decipher portal. <br /><br />Once the api key has been created with all permissions, please insert the key on the textbox below:</p>
       <div className='monishprojectapi_settingscontainer'>
         <VSCodeTextField placeholder='Add the api key here...' value={apiDataInp} onChange={changeText} onKeyUp={checkKeypress}>
         </VSCodeTextField>
         <VSCodeButton appearance='primary' onClick={updateApiKey}>
-          Apply API Key
+          Save API Key
         </VSCodeButton>
         {Boolean(apiDataInp) &&
           (<VSCodeButton appearance="secondary" onClick={testApiKey}>
@@ -215,7 +227,7 @@ export function Addnewprojectpage({ onChangePage, vscode }) {
 
   return (
     <>
-      <p>In order to fetch the information about your new project, please enter your project path:</p>
+      <p>In order to fetch the information about your new project, please enter your project path below:</p>
       <VSCodeTextField className="monishprojectapi_textfield" placeholder='selfserve/xxx/xxx/xxxxx' value={inputVal} onChange={changeText} onKeyUp={checkKeypress}>
       </VSCodeTextField>
       <div className='monishprojectapi_buttoncontainer'>
