@@ -4,8 +4,7 @@
 
 <h1 align="center">BS Interface</h1>
 
-An extension developed to edit and save XML survey files. It is used alongside [x_m_l_M_n_sh Snippets](vscode:extension/
-boodooa-monish.deciphersnips) to improve the workflow for scripting xml surveys.
+An extension developed to edit and save XML survey files. It is used alongside **[x_m_l_M_n_sh Snippets](vscode:extension/boodooa-monish.deciphersnips)** to improve the workflow for scripting xml surveys.
 
 ## Basic Design
 
