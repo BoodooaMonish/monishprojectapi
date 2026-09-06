@@ -47,7 +47,7 @@ export function Homepage({ onChangePage, vscode, projects }) {
             <VSCodeButton appearance="primary" onClick={gotoaddprojects} className='monishprojectapi_button'>
               Go to Add Project Page
             </VSCodeButton>
-            <p>If you have not set your api code. Click on the button below to add your api key.</p>
+            <p>If you have not set your api key. Click on the button below to add your api key.</p>
             <VSCodeButton appearance="primary" onClick={gotosettings} className='monishprojectapi_button'>
               Go to Settings Page
             </VSCodeButton>
