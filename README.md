@@ -1,65 +1,44 @@
-# monishprojectapi README
+<p align="center">
+    <img src="./logo.png" alt="Snippets logo" width="150">
+</p>
 
-This is the README for your extension "monishprojectapi". After writing up a brief description, we recommend including the following sections.
+<h1 align="center">BS Interface</h1>
 
-## Features
+An extension developed to edit and save XML survey files. It is used alongside [x_m_l_M_n_sh Snippets](vscode:extension/
+boodooa-monish.deciphersnips) to improve the workflow for scripting xml surveys.
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+## Basic Design
 
-For example if there is an image subfolder under your extension project workspace:
+This extension stores all information on the user's device. It does so by creating a config file on the user's installed extension storage.
 
-\!\[feature X\]\(images/feature-x.png\)
+This config file includes:
+- the saved api key
+- the list of projects added
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+Import and Export Functionalities have been added to allow the user to use the same config file on different devices by exporting and them importing them on the other device.
+
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+This extension requires a survey api key work. Please contact your relevant parties to obtain access to the api key.
 
-## Extension Settings
+## Features
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+This extension features some basic survey editing functions typically used when scripting surveys:
 
-For example:
+- add/delete a project on the config's project list.
+- basic search to find a relevant project
+- add/test an api key
+- import/export the config file
+- set projects as favorite to pin them first in the order of the project list.
+- go directly to the project portal using the project's hyperlink.
 
-This extension contributes the following settings:
+## Interface Guide
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+
+
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+- Avoid multi clicking on the fetch buttons when saving or add project. This can cause your api to get banned.
+- Always wait for the fetch and save requests to complete before continuing. Information / Error Message Boxes have been add to inform you about the status of your requests.

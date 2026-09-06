@@ -4,6 +4,8 @@
   "displayName": "Monish Project API",
   "description": "Monish Project API",
   "version": "0.0.1",
+  "icon": "logo.png",
+  "repository": "https://github.com/BoodooaMonish/monishprojectapi",
   "engines": {
     "vscode": "^1.95.0"
   },
