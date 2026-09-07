@@ -31,11 +31,22 @@ This extension features some basic survey editing functions typically used when 
 - import/export the config file
 - set projects as favorite to pin them first in the order of the project list.
 - go directly to the project portal using the project's hyperlink.
+- editing the fetched survey.xml file and saving it back using (ctrl+s)
 
 ## Interface Guide
 
+![alt screen1](./media/screen1.png)
 
-
+1. Go to add project page for adding a new project on the config file
+2. Import the config file for sharing it on other devices
+3. Export the config file retrieved on another device
+4. Go to setting page for configuring the api key
+5. Search for a particular project from the project list (min 3 character to start filtering)
+6. Open the project's xml file
+7. Go to the project's overview page using as a external link
+8. Set/Unset the project as favorite
+9. Delete the project from the project list
+10. Open/Close the extension's side panel (persistent)
 
 ## Known Issues
 
